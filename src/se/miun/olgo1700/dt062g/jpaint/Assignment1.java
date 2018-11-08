@@ -39,7 +39,7 @@ public class Assignment1 {
 			else if(userInput.equalsIgnoreCase("Rectangle"))
 				System.out.println("Rectangle");
 			else
-				System.out.println("Invalid input, try again!");
+				System.out.println("Invalid input, please try again!");
 		}
 		
 		input.close();
