@@ -15,7 +15,7 @@ import java.lang.Math; //power
 
 public class Assignment1 {
 	
-	static double pi = 3.14;
+	static final double PI = 3.14;
 	static double circleRadius, rectWidth, rectHeight; //variables for user input of integer values
 
 	public static void main(String[] args) {
@@ -67,12 +67,12 @@ public class Assignment1 {
 
 	//calculates and returns circle circumference
 	private static double circumferenceCircle() {
-		return 2*pi*circleRadius;
+		return 2*PI*circleRadius;
 	}
 	
 	//calculates and returns circle area
 	private static double areaCircle() {
-		return pi*Math.pow(circleRadius, 2);
+		return PI*Math.pow(circleRadius, 2);
 	}
 	
 	//calculates and returns rectangle circumference
