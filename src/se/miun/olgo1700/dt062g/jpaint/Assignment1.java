@@ -1,6 +1,7 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
 import java.util.*; //Scanner
+
 import java.lang.Math; //power
 
 /**
@@ -16,7 +17,6 @@ import java.lang.Math; //power
 public class Assignment1 {
 	
 	static final double PI = 3.14;
-	static double circleRadius, rectWidth, rectHeight; //variables for user input of integer values
 
 	public static void main(String[] args) {
 		
@@ -40,24 +40,24 @@ public class Assignment1 {
 			}
 			else if(userInput.equalsIgnoreCase("Circle")) { //'circle' option
 				System.out.print("What's your circle raduis? ");
-				circleRadius = input.nextDouble();
+				double circleRadius = input.nextDouble();
 				input.nextLine();
 				
-				System.out.println("Circle circumference = " + circumferenceCircle());
-				System.out.println("Circle area = " + areaCircle());
+				System.out.println("Circle circumference = " + circumferenceCircle(circleRadius));
+				System.out.println("Circle area = " + areaCircle(circleRadius));
 				
 			}
 			else if(userInput.equalsIgnoreCase("Rectangle")) { //'rectangle' option
 				System.out.print("What's your rectangle width? ");
-				rectWidth = input.nextDouble();
+				double rectWidth = input.nextDouble();
 				input.nextLine();
 				
 				System.out.print("What's your rectangle height? ");
-				rectHeight = input.nextDouble();
+				double rectHeight = input.nextDouble();
 				input.nextLine();
 				
-				System.out.println("Rectangle circumference = " + circumferenceRect());
-				System.out.println("Rectangle area = " + areaRect());
+				System.out.println("Rectangle circumference = " + circumferenceRect(rectWidth, rectHeight));
+				System.out.println("Rectangle area = " + areaRect(rectWidth, rectHeight));
 			}
 			else
 				System.out.println("Invalid input, please try again!"); //input not recognised as a menu alternative
@@ -66,23 +66,23 @@ public class Assignment1 {
 	}
 
 	//calculates and returns circle circumference
-	private static double circumferenceCircle() {
-		return 2*PI*circleRadius;
+	private static double circumferenceCircle(double circRadius) {
+		return 2*PI*circRadius;
 	}
 	
 	//calculates and returns circle area
-	private static double areaCircle() {
-		return PI*Math.pow(circleRadius, 2);
+	private static double areaCircle(double circRadius) {
+		return PI*Math.pow(circRadius, 2);
 	}
 	
 	//calculates and returns rectangle circumference
-	private static double circumferenceRect() {
-		return 2*(rectWidth + rectHeight);
+	private static double circumferenceRect(double recWidth, double recHeight) {
+		return 2*(recWidth + recHeight);
 	}
 	
 	//calculates and returns rectangle area
-	private static double areaRect() {
-		return rectWidth * rectHeight;
+	private static double areaRect(double recWidth, double recHeight) {
+		return recWidth * recHeight;
 	}
 
 }
