@@ -9,7 +9,7 @@ package se.miun.olgo1700.dt062g.jpaint;
 */
 public abstract class Shape implements Drawable {
 	
-	private String color;
+	protected String color;
 	private Point points[];
 	
 	/**
@@ -70,6 +70,4 @@ public abstract class Shape implements Drawable {
 	public void addPoint(Point p) {
 		points[1] = p;
 	}
-	
-	
 }
