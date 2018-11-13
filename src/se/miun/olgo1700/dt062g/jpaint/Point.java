@@ -8,15 +8,15 @@ package se.miun.olgo1700.dt062g.jpaint;
 * @since   2018-11-13
 */
 public class Point {
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	
 	/**
 	 * Constructor initiates a Point object by assigning x and y coordinates values provided as parameters.
 	 * @param x
 	 * @param y
 	 */
-	public Point(int x, int y) {
+	public Point(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -31,28 +31,28 @@ public class Point {
 	 * Returns X coordinate value.
 	 * @return the x
 	 */
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	/**
 	 * Sets X coordinate to a value provided as parameter.
 	 * @param x the x to set
 	 */
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 	/**
 	 * Returns Y coordinate value.
 	 * @return the y
 	 */
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	/**
 	 * Sets X coordinate to a value provided as parameter.
 	 * @param y the y to set
 	 */
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	/* (non-Javadoc)
