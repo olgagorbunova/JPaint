@@ -71,7 +71,6 @@ public class Rectangle extends Shape {
 	 * @return rectangle area, or -1 if calculation can not be performed
 	 */
 	public double getArea() {
-		//return recWidth * recHeight;
 		if(points[1] == null)
 			return -1;
 		else
