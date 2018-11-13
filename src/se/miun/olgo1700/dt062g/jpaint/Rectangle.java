@@ -30,37 +30,52 @@ public class Rectangle extends Shape {
 	}
 	
 	/**
-	 * Returns rectangle width.
-	 * @return width of rectangle
+	 * Calculates and returns rectangle width.
+	 * @return width of rectangle, or -1 if calculation can not be performed
 	 */
 	public double getWidth() {
-		return -1;
+		if(points[1] == null)
+			return -1;
+		else if(points[0].getX() > 0 && points[1].getX() > 0)
+			return points[1].getX() - points[0].getX();
+		else
+			return Math.abs(points[0].getX()) + points[1].getX();
 	}
 	
 	/**
-	 * Returns rectangle height.
-	 * @return height of rectangle
+	 * Calculates and returns rectangle height.
+	 * @return height of rectangle, or -1 if calculation can not be performed
 	 */
 	public double getHeight() {
-		return -1;
+		if(points[1] == null)
+			return -1;
+		else if(points[0].getY() > 0 && points[1].getY() > 0)
+			return points[1].getY() - points[0].getY();
+		else
+			return Math.abs(points[0].getY()) + points[1].getY();
 	}
 	
 	/**
 	 * Calculates and returns rectangle circumference.
-	 * @return rectangle circumference
+	 * @return rectangle circumference, or -1 if calculation can not be performed
 	 */
 	public double getCircumference() {
-		//return 2*(recWidth + recHeight);
-		return -1;
+		if(points[1] == null)
+			return -1;
+		else
+			return 2*(this.getWidth() + this.getHeight());
 	}
 	
 	/**
 	 * Calculates and returns rectangle area.
-	 * @return rectangle area
+	 * @return rectangle area, or -1 if calculation can not be performed
 	 */
 	public double getArea() {
 		//return recWidth * recHeight;
-		return -1;
+		if(points[1] == null)
+			return -1;
+		else
+			return this.getWidth() * this.getHeight();
 	}
 	
 	/**
@@ -83,7 +98,15 @@ public class Rectangle extends Shape {
 	 */
 	@Override
 	public String toString() {
-		return "A " + color + " rectangle";
+		String end, width, height;
+		if(points[1] == null)
+			end = width = height = "N/A";
+		else {
+			end = points[1].toString();
+			width = Double.toString(this.getWidth());
+			height = Double.toString(this.getHeight());
+		}
+		return "Rectangle [start=" + points[0].toString() + "; end=" + end + "; width=" + width + "; height=" + height + "; color=" + color + "]";
 	}
 
 }

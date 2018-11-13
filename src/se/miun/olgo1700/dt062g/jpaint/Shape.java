@@ -10,7 +10,7 @@ package se.miun.olgo1700.dt062g.jpaint;
 public abstract class Shape implements Drawable {
 	
 	protected String color;
-	private Point points[];
+	protected Point points[];
 	
 	/**
 	 * Constructor initiates a Shape object by setting color value and adding coordinates to a shape's first point. Point object is created based on the parameters coordinate values.

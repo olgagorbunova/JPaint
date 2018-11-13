@@ -13,8 +13,8 @@ public class Point {
 	
 	/**
 	 * Constructor initiates a Point object by assigning x and y coordinates values provided as parameters.
-	 * @param x
-	 * @param y
+	 * @param x coordinate x
+	 * @param y coordinate y
 	 */
 	public Point(double x, double y) {
 		this.x = x;
@@ -60,7 +60,7 @@ public class Point {
 	 */
 	@Override
 	public String toString() {
-		return "Point [x=" + x + ", y=" + y + "]";
+		return x + "," + y;
 	}
 	
 	
