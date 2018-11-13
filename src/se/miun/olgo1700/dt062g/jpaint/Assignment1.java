@@ -11,7 +11,7 @@ import java.lang.Math; //power
 *
 * @author  Olga Gorbunova (olgo1700)
 * @version 1.0
-* @since   2017-10-30 
+* @since   2018-11-07 
 */
 
 public class Assignment1 {
@@ -65,22 +65,40 @@ public class Assignment1 {
 		input.close();
 	}
 
-	//calculates and returns circle circumference
+	/**
+	 * Calculates and returns circle circumference.
+	 * @param circRadius circle radius
+	 * @return circle circumference
+	 */
 	private static double circumferenceCircle(double circRadius) {
 		return 2*PI*circRadius;
 	}
 	
-	//calculates and returns circle area
+	/**
+	 * Calculates and returns circle area.
+	 * @param circRadius circle radius
+	 * @return circle area
+	 */
 	private static double areaCircle(double circRadius) {
 		return PI*Math.pow(circRadius, 2);
 	}
 	
-	//calculates and returns rectangle circumference
+	/**
+	 * Calculates and returns rectangle circumference.
+	 * @param recWidth rectangle width
+	 * @param recHeight rectangle height
+	 * @return rectangle circumference
+	 */
 	private static double circumferenceRect(double recWidth, double recHeight) {
 		return 2*(recWidth + recHeight);
 	}
 	
-	//calculates and returns rectangle area
+	/**
+	 * Calculates and returns rectangle area.
+	 * @param recWidth rectangle width
+	 * @param recHeight rectangle height
+	 * @return rectangle area
+	 */
 	private static double areaRect(double recWidth, double recHeight) {
 		return recWidth * recHeight;
 	}
