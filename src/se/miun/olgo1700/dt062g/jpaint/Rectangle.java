@@ -1,8 +1,8 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
 /**
-* Class represents a rectangle geometric shape, where it's placement is represented 
-* by coordinate points for it's upper left and lower right corners.
+* Class represents a rectangle geometric shape. In this class, rectangle is defined by it's upper left and lower right corners 
+* coordinates. Class provides rectangle width, height, circumference and area calculations, as well as draws the shape.
 *
 * @author  Olga Gorbunova (olgo1700)
 * @version 1.0
