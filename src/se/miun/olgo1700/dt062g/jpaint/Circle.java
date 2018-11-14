@@ -10,7 +10,7 @@ package se.miun.olgo1700.dt062g.jpaint;
 */
 public class Circle extends Shape {
 	
-	final static double PI = 3.14;
+	final static public double PI = 3.14;
 
 	/**
 	 * Initiates circle object.
