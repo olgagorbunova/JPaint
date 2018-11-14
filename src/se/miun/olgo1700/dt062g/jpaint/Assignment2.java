@@ -14,6 +14,8 @@ public class Assignment2 {
 
 	public static void main(String[] args) {
 		testRectangle();
+		System.out.println(); // new line
+		testCircle();
 	}
 	
 	private static void testRectangle() {
@@ -55,5 +57,31 @@ public class Assignment2 {
 		// Print circumference and area of rectangle s1
 		System.out.println("\nThe circumference of s1 is: " + s1.getCircumference()); // 30.0
 		System.out.println("The area of s1 is: " + s1.getArea()); // 50.0
+	}
+	
+	private static void testCircle() {
+		// Create a circle and store it as a Shape. Draw it.
+		Shape s1 = new Circle(5, 5, "#000000"); // black
+		System.out.println("Drawing a newly created circle...");
+		s1.draw();
+		
+		// Add a end point to the circle and draw it again
+		Point p1 = new Point(8, 9);
+		System.out.println("\nAdding " + p1 + " as end point to shape s1...");
+		s1.addPoint(p1);
+		s1.draw();
+		
+		// Print circumference and area of rectangle s1
+		System.out.println("\nThe circumference of s1 is: " + s1.getCircumference()); // 31.4
+		System.out.println("The area of s1 is: " + s1.getArea()); // 78.5
+		
+		// Set new end point to shape s1 by calling addPoint with a 
+		// new value and then print the new radius (by doing a cast)
+		s1.addPoint(5, 15);
+		// double radiusS1 = s1.getRadius(); // will not work
+		
+		double radiusS1 = ((Circle) s1).getRadius();
+		System.out.println("\nChanging end point of s1 to (5.0, 15.0)...");
+		System.out.println("The radius of s1 is now: " + radiusS1); // 10.0
 	}
 }

@@ -35,12 +35,14 @@ public class Circle extends Shape {
 	 * Calculates and returns circle radius.
 	 * @return circle radius, or -1 if calculation can not be performed
 	 */
-	//double circleRadius = Math.Sqrt((xValue*xValue) + (yValue*yValue));
 	public double getRadius() {
 		if(points[1] == null)
 			return -1;
-		else
-			return Math.sqrt((points[0].getX()*points[1].getX()) + (points[0].getY()*points[1].getY()));
+		else {
+			double dx = points[1].getX() - points[0].getX();
+			double dy = points[1].getY() - points[0].getY();
+			return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+		}
 	}
 	
 	/**
