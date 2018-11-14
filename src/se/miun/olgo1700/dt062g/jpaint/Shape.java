@@ -13,18 +13,6 @@ public abstract class Shape implements Drawable {
 	protected Point points[];
 	
 	/**
-	 * Constructor initiates a Shape object by setting color value and adding coordinates to a shape's first point. Point object is created based on the parameters coordinate values.
-	 * @param x coordinate x
-	 * @param y coordinate y
-	 * @param color shape color
-	 */
-	public Shape(double x, double y, String color) {
-		this.color = color;
-		points = new Point[2];
-		points[0] = new Point(x, y);
-	}
-	
-	/**
 	 * Constructor initiates a Shape object by setting color value and adding coordinates to a shape's first point. Point object is provided as a parameter.
 	 * @param p Point on a coordinate system
 	 * @param color shape color
@@ -33,6 +21,16 @@ public abstract class Shape implements Drawable {
 		this.color = color;
 		points = new Point[2];
 		points[0] = p;
+	}
+	
+	/**
+	 * Constructor initiates a Shape object by setting color value and adding coordinates to a shape's first point. Point object is created based on the parameters coordinate values.
+	 * @param x coordinate x
+	 * @param y coordinate y
+	 * @param color shape color
+	 */
+	public Shape(double x, double y, String color) {
+		this(new Point(x,y), color);
 	}
 
 	/**

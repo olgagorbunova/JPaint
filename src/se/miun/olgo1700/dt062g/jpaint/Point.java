@@ -24,8 +24,7 @@ public class Point {
 	 *Default constructor initiates a Point object by assigning x and y coordinates value 0.
 	 */
 	public Point() {
-		x = 0;
-		y = 0;
+		this(0, 0);
 	}
 	/**
 	 * Returns X coordinate value.
