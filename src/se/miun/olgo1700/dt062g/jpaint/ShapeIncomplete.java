@@ -10,6 +10,6 @@ package se.miun.olgo1700.dt062g.jpaint;
 public class ShapeIncomplete extends Exception {
 	
 	public String toString() {
-		return "Shape incomplete (second point missing)";
+		return "Shape incomplete, second point missing!";
 	}
 }
