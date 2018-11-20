@@ -16,3 +16,9 @@ __Rectangle__ and __Circle__ classes implement abstract methods from class __Sha
 Classes are tested with the test functions provided in the assignment.
 
 The code is documented in a way that allows for generation of Javadoc output.
+
+## Assignment 3
+
+A custom exception class, inheriting from _java.lang.Exception_, is created. The class is called __ShapeIncomplete__, and an object of the class is thrown if it is not possible to calculate a property of a geometric shape, if a shape is incomplete (second point defining a shape is mossing). __ShapeIncomplete__ class takes a calculation type String as a constructor argument, and overrides _toString_ method with relevant information.
+
+__Shape__ classes abstract methods, as well as __Rectangle__ and __Circle__ classes methods throw the exception.
