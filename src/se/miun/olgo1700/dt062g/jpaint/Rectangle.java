@@ -33,9 +33,9 @@ public class Rectangle extends Shape {
 	 * Calculates and returns rectangle width.
 	 * @return width of rectangle, or -1 if calculation can not be performed
 	 */
-	public double getWidth() {
+	public double getWidth() throws ShapeIncomplete{
 		if(points[1] == null)
-			return -1;
+			throw new ShapeIncomplete();
 		else if(points[0].getX() > 0 && points[1].getX() > 0)
 			return points[1].getX() - points[0].getX();
 		else
@@ -46,9 +46,9 @@ public class Rectangle extends Shape {
 	 * Calculates and returns rectangle height.
 	 * @return height of rectangle, or -1 if calculation can not be performed
 	 */
-	public double getHeight() {
+	public double getHeight() throws ShapeIncomplete{
 		if(points[1] == null)
-			return -1;
+			throw new ShapeIncomplete();
 		else if(points[0].getY() > 0 && points[1].getY() > 0)
 			return points[1].getY() - points[0].getY();
 		else
@@ -59,9 +59,9 @@ public class Rectangle extends Shape {
 	 * Calculates and returns rectangle circumference.
 	 * @return rectangle circumference, or -1 if calculation can not be performed
 	 */
-	public double getCircumference() {
+	public double getCircumference() throws ShapeIncomplete{
 		if(points[1] == null)
-			return -1;
+			throw new ShapeIncomplete();
 		else
 			return 2*(this.getWidth() + this.getHeight());
 	}
@@ -70,9 +70,9 @@ public class Rectangle extends Shape {
 	 * Calculates and returns rectangle area.
 	 * @return rectangle area, or -1 if calculation can not be performed
 	 */
-	public double getArea() {
+	public double getArea() throws ShapeIncomplete{
 		if(points[1] == null)
-			return -1;
+			throw new ShapeIncomplete();
 		else
 			return this.getWidth() * this.getHeight();
 	}
@@ -97,13 +97,21 @@ public class Rectangle extends Shape {
 	 */
 	@Override
 	public String toString() {
-		String end, width, height;
+		String end, width = null, height = null;
 		if(points[1] == null)
 			end = width = height = "N/A";
 		else {
 			end = points[1].toString();
-			width = Double.toString(this.getWidth());
-			height = Double.toString(this.getHeight());
+			try {
+				width = Double.toString(this.getWidth());
+			} catch (ShapeIncomplete e) {
+				System.out.println(e);
+			}
+			try {
+				height = Double.toString(this.getHeight());
+			} catch (ShapeIncomplete e) {
+				System.out.println(e);
+			}
 		}
 		return "Rectangle [start=" + points[0].toString() + "; end=" + end + "; width=" + width + "; height=" + height + "; color=" + color + "]";
 	}

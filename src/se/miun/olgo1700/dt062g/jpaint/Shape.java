@@ -49,8 +49,8 @@ public abstract class Shape implements Drawable {
 		this.color = color;
 	}
 	
-	public abstract double getCircumference();
-	public abstract double getArea();
+	public abstract double getCircumference() throws ShapeIncomplete;
+	public abstract double getArea() throws ShapeIncomplete;
 	
 	/**
 	 * Sets second point for a shape.
