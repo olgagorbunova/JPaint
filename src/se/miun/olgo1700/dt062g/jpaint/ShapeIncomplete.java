@@ -9,7 +9,17 @@ package se.miun.olgo1700.dt062g.jpaint;
 */
 public class ShapeIncomplete extends Exception {
 	
+	String calculation;
+	
+	/**
+	 * @param calculation
+	 */
+	public ShapeIncomplete(String calculation) {
+		super();
+		this.calculation = calculation;
+	}
+
 	public String toString() {
-		return "Shape incomplete, second point missing!";
+		return "Can not calculate " + calculation + ": shape incomplete, second point missing!";
 	}
 }
