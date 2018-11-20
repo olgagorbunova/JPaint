@@ -37,7 +37,7 @@ public class Circle extends Shape {
 	 */
 	public double getRadius() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("radius");
 		else {
 			double dx = points[1].getX() - points[0].getX();
 			double dy = points[1].getY() - points[0].getY();
@@ -51,7 +51,7 @@ public class Circle extends Shape {
 	 */
 	public double getCircumference() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("circumference");
 		else
 			return 2*PI*getRadius();
 	}
@@ -62,7 +62,7 @@ public class Circle extends Shape {
 	 */
 	public double getArea() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("area");
 		else
 			return PI*Math.pow(getRadius(), 2);
 	}

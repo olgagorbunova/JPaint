@@ -35,7 +35,7 @@ public class Rectangle extends Shape {
 	 */
 	public double getWidth() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("width");
 		else if(points[0].getX() > 0 && points[1].getX() > 0)
 			return points[1].getX() - points[0].getX();
 		else
@@ -48,7 +48,7 @@ public class Rectangle extends Shape {
 	 */
 	public double getHeight() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("height");
 		else if(points[0].getY() > 0 && points[1].getY() > 0)
 			return points[1].getY() - points[0].getY();
 		else
@@ -61,7 +61,7 @@ public class Rectangle extends Shape {
 	 */
 	public double getCircumference() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("circumference");
 		else
 			return 2*(this.getWidth() + this.getHeight());
 	}
@@ -72,7 +72,7 @@ public class Rectangle extends Shape {
 	 */
 	public double getArea() throws ShapeIncomplete{
 		if(points[1] == null)
-			throw new ShapeIncomplete();
+			throw new ShapeIncomplete("area");
 		else
 			return this.getWidth() * this.getHeight();
 	}
