@@ -64,7 +64,7 @@ public class Assignment3 {
 		try {
 			area = shape.getArea();
 			System.out.println("The area is: " + area);
-		} catch (ShapeIncomplete e) {
+		} catch (ShapeIncompleteException e) {
 			System.out.println(e);
 		}
 	}

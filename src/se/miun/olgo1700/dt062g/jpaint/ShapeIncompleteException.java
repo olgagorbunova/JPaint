@@ -7,14 +7,14 @@ package se.miun.olgo1700.dt062g.jpaint;
 * @version 1.0
 * @since   2018-11-20
 */
-public class ShapeIncomplete extends Exception {
+public class ShapeIncompleteException extends Exception {
 	
 	String calculation;
 	
 	/**
 	 * @param calculation
 	 */
-	public ShapeIncomplete(String calculation) {
+	public ShapeIncompleteException(String calculation) {
 		super();
 		this.calculation = calculation;
 	}
