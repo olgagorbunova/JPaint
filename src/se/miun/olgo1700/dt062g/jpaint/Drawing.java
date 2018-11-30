@@ -115,14 +115,29 @@ public class Drawing implements Drawable {
 		return totArea;
 	}
 
+	/**
+	 * Displays drawing.
+	 */
 	public void draw() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("A drawing by " + author + " called " + name);
+		for(Shape s: shapes)
+			System.out.println(s);
 	}
 
+	/**
+	 * Displays drawing.
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "Drawing [name=" + name + "; author=" + author + "; size=" + getSize() + "; circumference=" + getTotalCircumference() + "; area=" + getTotalArea() + "]";
 	}
 
 }

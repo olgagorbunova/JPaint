@@ -22,7 +22,7 @@ public class Assignment4 {
 		
 		Drawing d1 = new Drawing();
 		
-		//System.out.println(d1);
+		System.out.println(d1);
 		
 		// Set name and author.
 		System.out.println("\nSetting name and author...");
@@ -30,7 +30,7 @@ public class Assignment4 {
 		d1.setName("Mona Lisa");
 		d1.setAuthor("L. da Vincis");
 		
-		//System.out.println(d1);
+		System.out.println(d1);
 		
 		// Add five shapes with no end points
 		System.out.println("\nAdding 5 shapes with no end points...");
@@ -47,7 +47,7 @@ public class Assignment4 {
 		d1.addShape(nose);
 		d1.addShape(mouth);
 		
-		//System.out.println(d1);
+		System.out.println(d1);
 		
 		// Add a null shape (size should not increase!).
 		System.out.println("\nSize is: " + d1.getSize());
@@ -67,6 +67,21 @@ public class Assignment4 {
 		System.out.println("Total circumference is: " + d1.getTotalCircumference());
 		System.out.println("Total area is: " + d1.getTotalArea());
 		
-		
+		// Draw the entire drawing
+		System.out.println("\nDraw the drawing...");
+		d1.draw();
+
+		try {
+			// Print area of nose
+			System.out.println("\nArea of nose=" + nose.getArea());
+			
+			// Change end point of nose and print area again
+			Point p = new Point(100, 110);
+			System.out.println("Changing end point of nose to " + p);
+			nose.addPoint(p);
+			System.out.println("Area of nose=" + nose.getArea());
+		} catch (ShapeIncompleteException e) {
+			System.err.println(e.getMessage());
+		}		
 	}
 }
