@@ -22,3 +22,10 @@ The code is documented in a way that allows for generation of Javadoc output.
 A custom exception class, inheriting from _java.lang.Exception_, is created. The class is called __ShapeIncomplete__, and an object of the class is thrown if it is not possible to calculate a property of a geometric shape, if a shape is incomplete (second point defining a shape is mossing). __ShapeIncomplete__ class takes a calculation type String as a constructor argument, and overrides _toString_ method with relevant information.
 
 __Shape__ classes abstract methods, as well as __Rectangle__ and __Circle__ classes methods throw the exception.
+
+## Assignment 4
+
+Shape "points" container is changed from _array[]_ to _ArrayList_ from Java Collections.
+
+Class __Drawing__ is implemented. __Drawing__ attributes are name, author and geometric shapes that the drawing consists of. Geometric shapes are stored as _LinkedList_ (more suitable for handling elements in the beginning and end of a list). This class has a number of methods that provide information about drawing element; it also implements interface __Drawable__.
+*
