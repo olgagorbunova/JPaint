@@ -1,5 +1,7 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
+import java.util.ArrayList;
+
 /**
 * Class Shape is an abstract class that can be inherited by classes representing geometric figures.
 *
@@ -10,7 +12,7 @@ package se.miun.olgo1700.dt062g.jpaint;
 public abstract class Shape implements Drawable {
 	
 	protected String color;
-	protected Point points[];
+	protected ArrayList<Point> points;
 	
 	/**
 	 * Constructor initiates a Shape object by setting color value and adding coordinates to a shape's first point. Point object is provided as a parameter.
@@ -19,8 +21,8 @@ public abstract class Shape implements Drawable {
 	 */
 	public Shape(Point p, String color) {
 		this.color = color;
-		points = new Point[2];
-		points[0] = p;
+		points = new ArrayList<>();
+		points.add(0, p);
 	}
 	
 	/**
@@ -58,7 +60,7 @@ public abstract class Shape implements Drawable {
 	 * @param y coordinate y
 	 */
 	public void addPoint(double x, double y) {
-		points[1] = new Point(x, y);
+		points.add(1, new Point(x, y));
 	}
 	
 	/**
@@ -66,6 +68,6 @@ public abstract class Shape implements Drawable {
 	 * @param p Point on a coordinate system
 	 */
 	public void addPoint(Point p) {
-		points[1] = p;
+		points.add(1, p);
 	}
 }

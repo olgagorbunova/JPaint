@@ -36,11 +36,11 @@ public class Circle extends Shape {
 	 * @return circle radius, or -1 if calculation can not be performed
 	 */
 	public double getRadius() throws ShapeIncompleteException{
-		if(points[1] == null)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("radius");
 		else {
-			double dx = points[1].getX() - points[0].getX();
-			double dy = points[1].getY() - points[0].getY();
+			double dx = points.get(1).getX() - points.get(0).getX();
+			double dy = points.get(1).getY() - points.get(0).getY();
 			return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 		}
 	}
@@ -50,7 +50,7 @@ public class Circle extends Shape {
 	 * @return circle circumference, or -1 if calculation can not be performed
 	 */
 	public double getCircumference() throws ShapeIncompleteException{
-		if(points[1] == null)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("circumference");
 		else
 			return 2*PI*getRadius();
@@ -61,7 +61,7 @@ public class Circle extends Shape {
 	 * @return circle area, or -1 if calculation can not be performed
 	 */
 	public double getArea() throws ShapeIncompleteException{
-		if(points[1] == null)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("area");
 		else
 			return PI*Math.pow(getRadius(), 2);
@@ -88,17 +88,17 @@ public class Circle extends Shape {
 	@Override
 	public String toString() {
 		String end, radius = null;
-		if(points[1] == null)
+		if(points.size() < 2)
 			end = radius = "N/A";
 		else {
-			end = points[1].toString();
+			end = points.get(1).toString();
 			try {
 				radius = Double.toString(this.getRadius());
 			} catch (ShapeIncompleteException e) {
 				System.out.println(e);
 			}
 		}
-		return "Circle [start=" + points[0].toString() + "; end=" + end + "; radius=" + radius + "; color=" + color + "]";
+		return "Circle [start=" + points.get(0).toString() + "; end=" + end + "; radius=" + radius + "; color=" + color + "]";
 	}
 	
 }
