@@ -7,7 +7,7 @@ import java.util.ArrayList;
 *
 * @author  Olga Gorbunova (olgo1700)
 * @version 1.0
-* @since   2018-11-20
+* @since   2018-11-30
 */
 public abstract class Shape implements Drawable {
 	

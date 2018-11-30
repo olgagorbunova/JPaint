@@ -6,7 +6,7 @@ package se.miun.olgo1700.dt062g.jpaint;
 *
 * @author  Olga Gorbunova (olgo1700)
 * @version 1.0
-* @since   2018-11-20
+* @since   2018-11-30
 */
 public class Circle extends Shape {
 	

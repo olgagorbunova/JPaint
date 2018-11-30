@@ -3,6 +3,13 @@ package se.miun.olgo1700.dt062g.jpaint;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
+/**
+* Class represents a drawing. Drawing attributes are name, author and geometric shapes that the drawing consists of.
+*
+* @author  Olga Gorbunova (olgo1700)
+* @version 1.0
+* @since   2018-11-30
+*/
 public class Drawing implements Drawable {
 	
 	private String name;
