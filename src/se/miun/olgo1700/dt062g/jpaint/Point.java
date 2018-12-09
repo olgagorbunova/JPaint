@@ -1,5 +1,10 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
 * Class Point represents a point in a coordinate system.
 *
@@ -7,8 +12,13 @@ package se.miun.olgo1700.dt062g.jpaint;
 * @version 1.0
 * @since   2018-11-13
 */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Point {
+	@XmlElement
 	private double x;
+	@XmlElement
 	private double y;
 	
 	/**
@@ -16,6 +26,7 @@ public class Point {
 	 * @param x coordinate x
 	 * @param y coordinate y
 	 */
+	
 	public Point(double x, double y) {
 		this.x = x;
 		this.y = y;

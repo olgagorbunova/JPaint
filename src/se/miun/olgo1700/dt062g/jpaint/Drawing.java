@@ -3,6 +3,11 @@ package se.miun.olgo1700.dt062g.jpaint;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
 * Class represents a drawing. Drawing attributes are name, author and geometric shapes that the drawing consists of.
 *
@@ -10,11 +15,15 @@ import java.util.LinkedList;
 * @version 1.0
 * @since   2018-11-30
 */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Drawing implements Drawable {
-	
+	@XmlElement
 	private String name;
+	@XmlElement
 	private String author;
-	private LinkedList<Shape> shapes;
+	@XmlElement
+	private LinkedList<Shape> shape;
 	
 	/** 
 	 * Default no-argument constructor.
@@ -22,7 +31,7 @@ public class Drawing implements Drawable {
 	public Drawing() {
 		this.name = "not provided";
 		this.author = "unknown";
-		shapes = new LinkedList<>();
+		shape = new LinkedList<>();
 	}
 	
 	/** 
@@ -33,7 +42,7 @@ public class Drawing implements Drawable {
 	public Drawing(String name, String author) {
 		this.name = name;
 		this.author = author;
-		shapes = new LinkedList<>();
+		shape = new LinkedList<>();
 	}
 	
 	
@@ -71,11 +80,25 @@ public class Drawing implements Drawable {
 	}
 	
 	/**
+	 * @return the shape
+	 */
+	public LinkedList<Shape> getShape() {
+		return shape;
+	}
+
+	/**
+	 * @param shape the shape to set
+	 */
+	public void setShape(LinkedList<Shape> shape) {
+		this.shape = shape;
+	}
+
+	/**
 	 * Places a shape at the beginning of a shape list as long as shape argument does not refer to null.
 	 */
 	public void addShape(Shape s) {
 		if(s != null)
-			shapes.addLast(s);
+			shape.addLast(s);
 	}
 	
 	/**
@@ -83,7 +106,7 @@ public class Drawing implements Drawable {
 	 * @return number of shapes in a drawing.
 	 */
 	public int getSize() {
-		return shapes.size();
+		return shape.size();
 	}
 	
 	/**
@@ -92,7 +115,7 @@ public class Drawing implements Drawable {
 	 */
 	public double getTotalCircumference() {
 		double totCirc = 0;
-		for(Shape s: shapes) {
+		for(Shape s: shape) {
 			try {
 				double sCirc = s.getCircumference();
 				totCirc += sCirc;
@@ -110,7 +133,7 @@ public class Drawing implements Drawable {
 	 */
 	public double getTotalArea() {
 		double totArea = 0;
-		for(Shape s: shapes) {
+		for(Shape s: shape) {
 			try {
 				double sArea = s.getArea();
 				totArea += sArea;
@@ -127,7 +150,7 @@ public class Drawing implements Drawable {
 	 */
 	public void draw() {
 		System.out.println("A drawing by " + author + " called " + name);
-		for(Shape s: shapes)
+		for(Shape s: shape)
 			System.out.println(s);
 	}
 
@@ -138,6 +161,11 @@ public class Drawing implements Drawable {
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void clear() {
+		shape.clear();
+		name = author = "";
 	}
 	
 	/* (non-Javadoc)

@@ -2,6 +2,12 @@ package se.miun.olgo1700.dt062g.jpaint;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+
 /**
 * Class Shape is an abstract class that can be inherited by classes representing geometric figures.
 *
@@ -9,10 +15,21 @@ import java.util.ArrayList;
 * @version 1.0
 * @since   2018-11-30
 */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Circle.class, Rectangle.class})
+
 public abstract class Shape implements Drawable {
-	
+	@XmlElement
 	protected String color;
-	protected ArrayList<Point> points;
+	@XmlElement
+	protected ArrayList<Point> point;
+	
+	/**
+	 * Empty/default constructor
+	 */
+	public Shape() {
+	}
 	
 	/**
 	 * Constructor initiates a Shape object by setting color value and adding coordinates to a shape's first point. Point object is provided as a parameter.
@@ -21,8 +38,8 @@ public abstract class Shape implements Drawable {
 	 */
 	public Shape(Point p, String color) {
 		this.color = color;
-		points = new ArrayList<>();
-		points.add(0, p);
+		point = new ArrayList<>();
+		point.add(0, p);
 	}
 	
 	/**
@@ -51,6 +68,20 @@ public abstract class Shape implements Drawable {
 		this.color = color;
 	}
 	
+	/**
+	 * @return the point
+	 */
+	public ArrayList<Point> getPoint() {
+		return point;
+	}
+
+	/**
+	 * @param point the point to set
+	 */
+	public void setPoint(ArrayList<Point> point) {
+		this.point = point;
+	}
+
 	public abstract double getCircumference() throws ShapeIncompleteException;
 	public abstract double getArea() throws ShapeIncompleteException;
 	
@@ -60,7 +91,7 @@ public abstract class Shape implements Drawable {
 	 * @param y coordinate y
 	 */
 	public void addPoint(double x, double y) {
-		points.add(1, new Point(x, y));
+		point.add(1, new Point(x, y));
 	}
 	
 	/**
@@ -68,6 +99,6 @@ public abstract class Shape implements Drawable {
 	 * @param p Point on a coordinate system
 	 */
 	public void addPoint(Point p) {
-		points.add(1, p);
+		point.add(1, p);
 	}
 }
