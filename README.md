@@ -28,4 +28,8 @@ __Shape__ classes abstract methods, as well as __Rectangle__ and __Circle__ clas
 Shape "points" container is changed from _array[]_ to _ArrayList_ from Java Collections.
 
 Class __Drawing__ is implemented. __Drawing__ attributes are name, author and geometric shapes that the drawing consists of. Geometric shapes are stored as _LinkedList_ (more suitable for handling elements in the beginning and end of a list). This class has a number of methods that provide information about drawing element; it also implements interface __Drawable__.
-*
+
+## Assignment 5
+
+A new class, __FileHandler__, handles writing a _Drawing_ object to an XML file, as well as reading a _Drawing_ object from an XML file. This is done with help of JAXB library.
+__Drawing class__, as well as underlying classes, are annotated to generate correct XML node mapping.
