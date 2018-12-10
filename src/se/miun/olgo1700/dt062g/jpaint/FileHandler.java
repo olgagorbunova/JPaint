@@ -5,6 +5,7 @@ import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
 * Class includes methods that serialize Drawing objects to XML, as well as extract Drawing objects from an XML file.
@@ -60,8 +61,18 @@ public class FileHandler {
 		saveToXML(drawing, fileName);
 	}
 	
-	public static void loadFromXML(String fileName) {
+	public static Drawing loadFromXML(String fileName) {
+		Drawing drawing = new Drawing();
 		
+		try {
+			JAXBContext jc = JAXBContext.newInstance(Drawing.class);
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			drawing = (Drawing) unmarshaller.unmarshal(new File(fileName));
+		} catch (JAXBException e) {
+			System.err.println("Error while reading object from XML");
+		}
+		
+		return drawing;
 	}
 
 }

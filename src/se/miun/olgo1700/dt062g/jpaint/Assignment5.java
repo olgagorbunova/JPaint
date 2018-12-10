@@ -55,13 +55,20 @@ public class Assignment5 {
 		d1.draw();
 		
 		// Save the drawing to XML
-		final String fileName = "MyDrawing.xml";
+		final String fileName = "Red Car.xml";
 		System.out.println("\nSave the drawing to " + fileName + "...");
 		FileHandler.saveToXML(d1, fileName);
 		
 		// Clear and print
 		System.out.println("\nClearing the drawing and then draw it....");
 		d1.clear();
+		d1.draw();
+		
+		// Load drawing from XML
+		System.out.println("\nLoad drawing from " + fileName + "...\n");
+		d1 = FileHandler.loadFromXML(fileName);
+				
+		// Print the drawing
 		d1.draw();
 	}
 }
