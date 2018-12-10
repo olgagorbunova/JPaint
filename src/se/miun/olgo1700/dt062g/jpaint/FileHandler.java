@@ -67,11 +67,17 @@ public class FileHandler {
 		try {
 			JAXBContext jc = JAXBContext.newInstance(Drawing.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
-			drawing = (Drawing) unmarshaller.unmarshal(new File(fileName));
+			
+			try {
+				File file = new File(fileName);
+				drawing = (Drawing) unmarshaller.unmarshal(file);
+			} catch(IllegalArgumentException e) {
+				System.err.println("File with given name not found");
+			}
+			
 		} catch (JAXBException e) {
 			System.err.println("Error while reading object from XML");
 		}
-		
 		return drawing;
 	}
 
