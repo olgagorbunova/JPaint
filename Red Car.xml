@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<drawing>
+    <name>Red Car</name>
+    <author>Olga G</author>
+    <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectangle">
+        <color>red</color>
+        <point>
+            <x>20.0</x>
+            <y>20.0</y>
+        </point>
+        <point>
+            <x>100.0</x>
+            <y>70.0</y>
+        </point>
+    </shape>
+    <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectangle">
+        <color>blue</color>
+        <point>
+            <x>20.0</x>
+            <y>30.0</y>
+        </point>
+        <point>
+            <x>40.0</x>
+            <y>50.0</y>
+        </point>
+    </shape>
+    <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectangle">
+        <color>blue</color>
+        <point>
+            <x>50.0</x>
+            <y>30.0</y>
+        </point>
+        <point>
+            <x>90.0</x>
+            <y>50.0</y>
+        </point>
+    </shape>
+    <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="circle">
+        <color>black</color>
+        <point>
+            <x>40.0</x>
+            <y>70.0</y>
+        </point>
+        <point>
+            <x>50.0</x>
+            <y>70.0</y>
+        </point>
+    </shape>
+    <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="circle">
+        <color>black</color>
+        <point>
+            <x>80.0</x>
+            <y>70.0</y>
+        </point>
+        <point>
+            <x>90.0</x>
+            <y>70.0</y>
+        </point>
+    </shape>
+</drawing>
