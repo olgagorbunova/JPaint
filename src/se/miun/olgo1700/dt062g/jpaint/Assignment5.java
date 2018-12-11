@@ -49,7 +49,7 @@ public class Assignment5 {
 		
 		d1.setName("Red Car");
 		d1.setAuthor("Olga G");
-		d1.setShape(list);
+		d1.setShapes(list);
 		
 		// Print the drawing
 		d1.draw();

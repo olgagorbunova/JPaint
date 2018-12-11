@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public abstract class Shape implements Drawable {
 	@XmlElement
 	protected String color;
-	@XmlElement
-	protected ArrayList<Point> point;
+	@XmlElement(name = "point")
+	protected ArrayList<Point> points;
 	
 	/**
 	 * Empty/default constructor
@@ -38,8 +38,8 @@ public abstract class Shape implements Drawable {
 	 */
 	public Shape(Point p, String color) {
 		this.color = color;
-		point = new ArrayList<>();
-		point.add(0, p);
+		points = new ArrayList<>();
+		points.add(0, p);
 	}
 	
 	/**
@@ -71,15 +71,15 @@ public abstract class Shape implements Drawable {
 	/**
 	 * @return the point
 	 */
-	public ArrayList<Point> getPoint() {
-		return point;
+	public ArrayList<Point> getPoints() {
+		return points;
 	}
 
 	/**
 	 * @param point the point to set
 	 */
-	public void setPoint(ArrayList<Point> point) {
-		this.point = point;
+	public void setPoints(ArrayList<Point> points) {
+		this.points = points;
 	}
 
 	public abstract double getCircumference() throws ShapeIncompleteException;
@@ -91,7 +91,7 @@ public abstract class Shape implements Drawable {
 	 * @param y coordinate y
 	 */
 	public void addPoint(double x, double y) {
-		point.add(1, new Point(x, y));
+		points.add(1, new Point(x, y));
 	}
 	
 	/**
@@ -99,6 +99,6 @@ public abstract class Shape implements Drawable {
 	 * @param p Point on a coordinate system
 	 */
 	public void addPoint(Point p) {
-		point.add(1, p);
+		points.add(1, p);
 	}
 }

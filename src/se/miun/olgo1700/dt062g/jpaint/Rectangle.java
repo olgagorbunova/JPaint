@@ -45,12 +45,12 @@ public class Rectangle extends Shape {
 	 * @return width of rectangle, or -1 if calculation can not be performed
 	 */
 	public double getWidth() throws ShapeIncompleteException{
-		if(point.size() < 2)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("width");
-		else if(point.get(0).getX() > 0 && point.get(1).getX() > 0)
-			return point.get(1).getX() - point.get(0).getX();
+		else if(points.get(0).getX() > 0 && points.get(1).getX() > 0)
+			return points.get(1).getX() - points.get(0).getX();
 		else
-			return Math.abs(point.get(0).getX()) + point.get(1).getX();
+			return Math.abs(points.get(0).getX()) + points.get(1).getX();
 	}
 	
 	/**
@@ -58,12 +58,12 @@ public class Rectangle extends Shape {
 	 * @return height of rectangle, or -1 if calculation can not be performed
 	 */
 	public double getHeight() throws ShapeIncompleteException{
-		if(point.size() < 2)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("height");
-		else if(point.get(0).getY() > 0 && point.get(1).getY() > 0)
-			return point.get(1).getY() - point.get(0).getY();
+		else if(points.get(0).getY() > 0 && points.get(1).getY() > 0)
+			return points.get(1).getY() - points.get(0).getY();
 		else
-			return Math.abs(point.get(0).getY()) + point.get(1).getY();
+			return Math.abs(points.get(0).getY()) + points.get(1).getY();
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class Rectangle extends Shape {
 	 * @return rectangle circumference, or -1 if calculation can not be performed
 	 */
 	public double getCircumference() throws ShapeIncompleteException{
-		if(point.size() < 2)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("circumference");
 		else
 			return 2*(this.getWidth() + this.getHeight());
@@ -82,7 +82,7 @@ public class Rectangle extends Shape {
 	 * @return rectangle area, or -1 if calculation can not be performed
 	 */
 	public double getArea() throws ShapeIncompleteException{
-		if(point.size() < 2)
+		if(points.size() < 2)
 			throw new ShapeIncompleteException("area");
 		else
 			return this.getWidth() * this.getHeight();
@@ -109,10 +109,10 @@ public class Rectangle extends Shape {
 	@Override
 	public String toString() {
 		String end, width = null, height = null;
-		if(point.size() < 2)
+		if(points.size() < 2)
 			end = width = height = "N/A";
 		else {
-			end = point.get(1).toString();
+			end = points.get(1).toString();
 			try {
 				width = Double.toString(this.getWidth());
 			} catch (ShapeIncompleteException e) {
@@ -124,7 +124,7 @@ public class Rectangle extends Shape {
 				System.out.println(e);
 			}
 		}
-		return "Rectangle [start=" + point.get(0).toString() + "; end=" + end + "; width=" + width + "; height=" + height + "; color=" + color + "]";
+		return "Rectangle [start=" + points.get(0).toString() + "; end=" + end + "; width=" + width + "; height=" + height + "; color=" + color + "]";
 	}
 
 }

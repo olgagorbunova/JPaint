@@ -22,8 +22,8 @@ public class Drawing implements Drawable {
 	private String name;
 	@XmlElement
 	private String author;
-	@XmlElement
-	private LinkedList<Shape> shape;
+	@XmlElement(name="shape")
+	private LinkedList<Shape> shapes;
 	
 	/** 
 	 * Default no-argument constructor.
@@ -31,7 +31,7 @@ public class Drawing implements Drawable {
 	public Drawing() {
 		this.name = "not provided";
 		this.author = "unknown";
-		shape = new LinkedList<>();
+		shapes = new LinkedList<>();
 	}
 	
 	/** 
@@ -42,7 +42,7 @@ public class Drawing implements Drawable {
 	public Drawing(String name, String author) {
 		this.name = name;
 		this.author = author;
-		shape = new LinkedList<>();
+		shapes = new LinkedList<>();
 	}
 	
 	
@@ -80,17 +80,17 @@ public class Drawing implements Drawable {
 	}
 	
 	/**
-	 * @return the shape
+	 * @return the shapes
 	 */
-	public LinkedList<Shape> getShape() {
-		return shape;
+	public LinkedList<Shape> getShapes() {
+		return shapes;
 	}
 
 	/**
 	 * @param shape the shape to set
 	 */
-	public void setShape(LinkedList<Shape> shape) {
-		this.shape = shape;
+	public void setShapes(LinkedList<Shape> shapes) {
+		this.shapes = shapes;
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class Drawing implements Drawable {
 	 */
 	public void addShape(Shape s) {
 		if(s != null)
-			shape.addLast(s);
+			shapes.addLast(s);
 	}
 	
 	/**
@@ -106,7 +106,7 @@ public class Drawing implements Drawable {
 	 * @return number of shapes in a drawing.
 	 */
 	public int getSize() {
-		return shape.size();
+		return shapes.size();
 	}
 	
 	/**
@@ -115,7 +115,7 @@ public class Drawing implements Drawable {
 	 */
 	public double getTotalCircumference() {
 		double totCirc = 0;
-		for(Shape s: shape) {
+		for(Shape s: shapes) {
 			try {
 				double sCirc = s.getCircumference();
 				totCirc += sCirc;
@@ -133,7 +133,7 @@ public class Drawing implements Drawable {
 	 */
 	public double getTotalArea() {
 		double totArea = 0;
-		for(Shape s: shape) {
+		for(Shape s: shapes) {
 			try {
 				double sArea = s.getArea();
 				totArea += sArea;
@@ -150,7 +150,7 @@ public class Drawing implements Drawable {
 	 */
 	public void draw() {
 		System.out.println("A drawing by " + author + " called " + name);
-		for(Shape s: shape)
+		for(Shape s: shapes)
 			System.out.println(s);
 	}
 
@@ -164,7 +164,7 @@ public class Drawing implements Drawable {
 	}
 	
 	public void clear() {
-		shape.clear();
+		shapes.clear();
 		name = author = "";
 	}
 	
