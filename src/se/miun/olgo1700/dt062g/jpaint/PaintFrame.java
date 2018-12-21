@@ -5,12 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
-* Class implements drawing application's GUI.
+* Class implements application's GUI.
 *
 * @author  Olga Gorbunova (olog1700)
 * @version 1.0
 * @since   2018-12-19
 */
+@SuppressWarnings("serial")
 public class PaintFrame extends JFrame {
 	private static String appName = "JPaint";
 	private static String drawingName;
@@ -75,7 +76,7 @@ public class PaintFrame extends JFrame {
 				else {
 					defaultInput = ".xml";
 				}
-				String fileName = JOptionPane.showInputDialog(PaintFrame.this, "Save drawing to:", defaultInput);
+				JOptionPane.showInputDialog(PaintFrame.this, "Save drawing to:", defaultInput);
 			}
 		});
 		JMenuItem loadItem = new JMenuItem("Load...");
@@ -129,7 +130,11 @@ public class PaintFrame extends JFrame {
 		
 		//add tool bar
 		toolBar = new JPanel();
-		toolBar.setLayout(new GridLayout(1, colors.length + 1));
+		
+		toolBar.setLayout(new BorderLayout());
+		JPanel colorBar = new JPanel();
+		colorBar.setLayout(new GridLayout(1, colors.length));
+		
 		colorBoxes = new JPanel[colors.length];
 		
 		ColorChooserHandler colHandler = new ColorChooserHandler();
@@ -137,13 +142,13 @@ public class PaintFrame extends JFrame {
 			colorBoxes[count] = new JPanel();
 			colorBoxes[count].setBackground(colors[count]);
 			colorBoxes[count].addMouseListener(colHandler);
-			toolBar.add(colorBoxes[count]);
+			
+			colorBar.add(colorBoxes[count]);
 		}
 
 		JComboBox<String> shapeChooser = new JComboBox<String>(shapes);
-		//shapeChooser.setPreferredSize(new Dimension(60, 30));
-		//shapeChooser.setSize(new Dimension(60, 30));
-		toolBar.add(shapeChooser);
+		toolBar.add(colorBar, BorderLayout.CENTER);
+		toolBar.add(shapeChooser, BorderLayout.EAST);
 		add(toolBar, BorderLayout.PAGE_START);
 		
 		//add drawing area
