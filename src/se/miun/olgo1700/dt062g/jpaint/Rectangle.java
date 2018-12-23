@@ -1,5 +1,9 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -99,8 +103,21 @@ public class Rectangle extends Shape {
 	 * Draws a rectangle.
 	 * @param g
 	 */
-	public void draw(java.awt.Graphics g) {
-		
+	public void draw(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		try {
+			Color rectColor = Color.decode(this.color);
+			g2d.setColor(rectColor);
+		} catch (Exception e) {
+			System.out.println("Can not set color, set to black");
+			g2d.setColor(Color.BLACK);
+		}
+		try {
+			g2d.fillRect((int)points.get(0).getX(), (int)points.get(0).getY(), (int)getWidth(), (int)getHeight());
+		} catch (ShapeIncompleteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -116,12 +133,12 @@ public class Rectangle extends Shape {
 			try {
 				width = Double.toString(this.getWidth());
 			} catch (ShapeIncompleteException e) {
-				System.out.println(e);
+				System.err.println(e);
 			}
 			try {
 				height = Double.toString(this.getHeight());
 			} catch (ShapeIncompleteException e) {
-				System.out.println(e);
+				System.err.println(e);
 			}
 		}
 		return "Rectangle [start=" + points.get(0).toString() + "; end=" + end + "; width=" + width + "; height=" + height + "; color=" + color + "]";

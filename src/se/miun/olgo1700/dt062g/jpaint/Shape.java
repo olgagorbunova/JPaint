@@ -1,5 +1,6 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -10,6 +11,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 /**
 * Class Shape is an abstract class that can be inherited by classes representing geometric figures.
+* NB Shape color has to be provided using it's hexadecimal representation (#xxxxxx).
 *
 * @author  Olga Gorbunova (olgo1700)
 * @version 1.0

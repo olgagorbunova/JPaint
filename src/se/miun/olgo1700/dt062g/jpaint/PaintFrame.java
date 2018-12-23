@@ -2,6 +2,9 @@ package se.miun.olgo1700.dt062g.jpaint;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import javax.swing.*;
 
 /**
@@ -14,11 +17,11 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class PaintFrame extends JFrame {
 	private static String appName = "JPaint";
-	private static String drawingName;
-	private static String drawingAuthor;
+	
+	private Drawing drawing;
 	
 	private final JPanel toolBar;
-	private final JPanel paintPanel;
+	private final DrawingPanel paintPanel;
 	private final JPanel[] colorBoxes;
 	private final JPanel colorstate;
 	private final JLabel xy;
@@ -44,21 +47,17 @@ public class PaintFrame extends JFrame {
 		fileMenu.add(newItem);
 		newItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event) {
-				drawingName = drawingAuthor = null;
-				String name = JOptionPane.showInputDialog(PaintFrame.this, "Enter name of the drawing:");
-				String author = JOptionPane.showInputDialog(PaintFrame.this, "Enter author of the drawing:");
-				if(name != null && author != null) {
-					drawingName = name;
-					drawingAuthor = author;
-					setTitle(appName + " - " + drawingName + " by " + drawingAuthor);
-				}
-				else if(name != null) {
-					drawingName = name;
-					setTitle(appName + " - " + drawingName);
-				}
-				else if(author != null) {
-					drawingAuthor = author;
-					setTitle(appName + " - " + drawingAuthor);
+				String name, author = null;
+				name = JOptionPane.showInputDialog(PaintFrame.this, "Enter name of the drawing:");
+				if(name != null)
+					author = JOptionPane.showInputDialog(PaintFrame.this, "Enter author of the drawing:");
+				
+				if(author != null) {
+					if(drawing != null)
+						drawing.clear();
+					drawing = new Drawing(name, author);
+					paintPanel.addDrawing(drawing);
+					displayTitle();
 				}
 			}
 		});
@@ -66,21 +65,68 @@ public class PaintFrame extends JFrame {
 		fileMenu.add(saveItem);
 		saveItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event) {
-				String defaultInput;
-				if(drawingName != null && drawingAuthor != null)
-					defaultInput = drawingName + " by " + drawingAuthor + ".xml";
-				else if(drawingName != null)
-					defaultInput = drawingName + ".xml";
-				else if(drawingAuthor != null) 
-					defaultInput = drawingAuthor + ".xml";
-				else {
-					defaultInput = ".xml";
+				if(drawing != null) {
+					String defaultInput;
+					String dName = drawing.getName();
+					String dAuthor = drawing.getAuthor();
+					if(dName.length() != 0 && dAuthor.length() != 0)
+						defaultInput = dName + " by " + dAuthor + ".xml";
+					else if(dName.length() != 0)
+						defaultInput = dName + ".xml";
+					else if(dAuthor.length() != 0) 
+						defaultInput = dAuthor + ".xml";
+					else {
+						defaultInput = ".xml";
+					}
+					String fileName = JOptionPane.showInputDialog(PaintFrame.this, "Save drawing to:", defaultInput);
+					if(fileName != null)
+						FileHandler.saveToXML(drawing, fileName);
 				}
-				JOptionPane.showInputDialog(PaintFrame.this, "Save drawing to:", defaultInput);
+				else
+					JOptionPane.showMessageDialog(PaintFrame.this, "No drawing to save");
 			}
 		});
 		JMenuItem loadItem = new JMenuItem("Load...");
 		fileMenu.add(loadItem);
+		loadItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event) {
+				String fileName = JOptionPane.showInputDialog(PaintFrame.this, "Load drawing from:");
+				if(fileName != null) {
+					try {
+						Drawing newDrawing = FileHandler.loadFromXML(fileName);
+						if(drawing == null) {
+							drawing = newDrawing;
+							paintPanel.setDrawing(drawing);
+							displayTitle();
+							paintPanel.repaint();
+						}
+						else {
+							paintPanel.addDrawing(newDrawing);
+							LinkedList<Shape> newShapes = newDrawing.getShapes();
+							Iterator<Shape> iterator = newShapes.iterator();
+							while(iterator.hasNext()) {
+								drawing.addShape(iterator.next());
+							}
+							paintPanel.repaint();
+						}
+					} catch (IllegalArgumentException e) {
+						JOptionPane.showMessageDialog(PaintFrame.this, "No file with given name found");
+					}
+				}
+			}
+		}
+		);
+		JMenuItem infoItem = new JMenuItem("Info");
+		fileMenu.add(infoItem);
+		infoItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event) {
+				if(drawing == null)
+					JOptionPane.showMessageDialog(PaintFrame.this, "Currently no drawing");
+				else
+					JOptionPane.showMessageDialog(PaintFrame.this, drawing.getName() + " by " + drawing.getAuthor() + "\nNumber of shapes: " + drawing.getSize() + "\nTotal area: " + drawing.getTotalArea() + "\nTotal circumference: " + drawing.getTotalCircumference());
+			}
+		}
+		);
 		fileMenu.addSeparator();
 		JMenuItem exitItem = new JMenuItem("Exit");
 		fileMenu.add(exitItem);
@@ -100,11 +146,8 @@ public class PaintFrame extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String name = JOptionPane.showInputDialog(PaintFrame.this, "Enter name of the drawing:");
 				if(name != null) {
-					drawingName = name;
-					if(drawingAuthor != null)
-						setTitle(appName + " - " + drawingName + " by " + drawingAuthor);
-					else
-						setTitle(appName + " - " + drawingName);
+					drawing.setName(name);
+					displayTitle();
 				}
 			}
 		});
@@ -114,11 +157,8 @@ public class PaintFrame extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String author = JOptionPane.showInputDialog(PaintFrame.this, "Enter author of the drawing:");
 				if(author != null) {
-					drawingAuthor = author;
-					if(drawingName != null)
-						setTitle(appName + " - " + drawingName + " by " + drawingAuthor);
-					else
-						setTitle(appName + " - " + drawingAuthor);
+					drawing.setAuthor(author);
+					displayTitle();
 				}
 			}
 		});
@@ -152,7 +192,7 @@ public class PaintFrame extends JFrame {
 		add(toolBar, BorderLayout.PAGE_START);
 		
 		//add drawing area
-		paintPanel = new JPanel();
+		paintPanel = new DrawingPanel();
 		paintPanel.setBackground(Color.WHITE);
 		add(paintPanel, BorderLayout.CENTER);
 		CoordinateChooserHandler corHandler = new CoordinateChooserHandler();
@@ -173,6 +213,7 @@ public class PaintFrame extends JFrame {
 		add(statusBar, BorderLayout.PAGE_END);
 	}
 	
+	//Mouse click handler for choosing color
 	private class ColorChooserHandler extends MouseAdapter {
 		public void mouseClicked(MouseEvent event) {
 			
@@ -185,9 +226,26 @@ public class PaintFrame extends JFrame {
 		}
 	}
 	
+	//Mouse move handler for getting coordinates
 	private class CoordinateChooserHandler extends MouseMotionAdapter {
 		public void mouseMoved(MouseEvent event) {
 			xy.setText(String.format(" Coordinates: %d, %d", event.getX(), event.getY()));	
 		}
 	}
+	
+	//Displays frame title with application name, drawing name and drawing author, if applicable
+	private void displayTitle() {
+		if(drawing.getName().length() != 0 && drawing.getAuthor().length() != 0)
+			setTitle(appName + " - " + drawing.getName() + " by " + drawing.getAuthor());
+		else if(drawing.getAuthor().length() == 0)
+			setTitle(appName + " - " + drawing.getName());
+		else if(drawing.getName().length() == 0)
+			setTitle(appName + " - " + drawing.getAuthor());
+	}
+	
+	
+	
+
+
+
 }

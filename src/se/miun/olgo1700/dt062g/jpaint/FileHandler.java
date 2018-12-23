@@ -61,19 +61,15 @@ public class FileHandler {
 		saveToXML(drawing, fileName);
 	}
 	
-	public static Drawing loadFromXML(String fileName) {
+	public static Drawing loadFromXML(String fileName) throws IllegalArgumentException {
 		Drawing drawing = new Drawing();
 		
 		try {
 			JAXBContext jc = JAXBContext.newInstance(Drawing.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
-			
-			try {
-				File file = new File(fileName);
-				drawing = (Drawing) unmarshaller.unmarshal(file);
-			} catch(IllegalArgumentException e) {
-				System.err.println("File with given name not found");
-			}
+
+			File file = new File(fileName);
+			drawing = (Drawing) unmarshaller.unmarshal(file);
 			
 		} catch (JAXBException e) {
 			System.err.println("Error while reading object from XML");

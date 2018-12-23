@@ -44,8 +44,6 @@ public class Drawing implements Drawable {
 		this.author = author;
 		shapes = new LinkedList<>();
 	}
-	
-	
 
 	/** 
 	 * Gets name.
@@ -159,8 +157,8 @@ public class Drawing implements Drawable {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		for(Shape s: shapes)
+			s.draw(g);
 	}
 	
 	public void clear() {

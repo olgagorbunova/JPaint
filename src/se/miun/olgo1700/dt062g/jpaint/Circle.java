@@ -1,5 +1,9 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -91,7 +95,21 @@ public class Circle extends Shape {
 	 * @param g
 	 */
 	public void draw(java.awt.Graphics g) {
-		
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		try {
+			Color circleColor = Color.decode(this.color);
+			g2d.setColor(circleColor);
+		} catch (Exception e) {
+			System.out.println("Can not set color, set to black");
+			g2d.setColor(Color.BLACK);
+		}
+		try {
+			g2d.fillOval((int)(points.get(0).getX() - getRadius()), (int)(points.get(0).getY() - getRadius()), (int)(2*getRadius()), (int)(2*getRadius()));
+		} catch (ShapeIncompleteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -107,7 +125,7 @@ public class Circle extends Shape {
 			try {
 				radius = Double.toString(this.getRadius());
 			} catch (ShapeIncompleteException e) {
-				System.out.println(e);
+				System.err.println(e);
 			}
 		}
 		return "Circle [start=" + points.get(0).toString() + "; end=" + end + "; radius=" + radius + "; color=" + color + "]";

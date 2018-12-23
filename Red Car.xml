@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <drawing>
-    <name>Red Car</name>
+    <name></name>
     <author>Olga G</author>
     <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectangle">
         <color>red</color>
@@ -14,7 +14,7 @@
         </point>
     </shape>
     <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectangle">
-        <color>blue</color>
+        <color>#FF0000</color>
         <point>
             <x>20.0</x>
             <y>30.0</y>
@@ -25,7 +25,7 @@
         </point>
     </shape>
     <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectangle">
-        <color>blue</color>
+        <color>#FF0000</color>
         <point>
             <x>50.0</x>
             <y>30.0</y>
@@ -36,7 +36,7 @@
         </point>
     </shape>
     <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="circle">
-        <color>black</color>
+        <color>#FF0000</color>
         <point>
             <x>40.0</x>
             <y>70.0</y>
@@ -47,7 +47,7 @@
         </point>
     </shape>
     <shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="circle">
-        <color>black</color>
+        <color>#FF0000</color>
         <point>
             <x>80.0</x>
             <y>70.0</y>

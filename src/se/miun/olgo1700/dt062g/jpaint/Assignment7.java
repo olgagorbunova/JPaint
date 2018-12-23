@@ -2,7 +2,7 @@ package se.miun.olgo1700.dt062g.jpaint;
 import javax.swing.SwingUtilities;
 
 /**
-* <h1>Assignment 6</h1>
+* <h1>Assignment 7</h1>
 * This class is the starting point for the drawing application.
 * It creates our JFrame and makes it visible.
 * 
@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 * @version 1.0
 * @since   2018-12-19
 */
-public class Assignment6 {
+public class Assignment7 {
 
 	public static void main(String[] args) {
 		// Make sure GUI is created on the event dispatching thread
