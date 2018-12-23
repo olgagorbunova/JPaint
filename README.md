@@ -37,4 +37,8 @@ __Drawing class__, as well as underlying classes, are annotated to generate corr
 ## Assignment 6
 
 In this assignment application's GUI is implemented with Java Swing. Implementation is done in __PaintFrame__ class that uses _JFrame_ container and several Swing components (_JPanel_, _JLabel_, _JComboBox_) to implement a tool bar for choosing drawing's color and shape, a drawing area, and a status bar that displays user's choise of color and coordinates of mouse moving over a drawing area. Menu bar is implemented with help of _JMenu_ and includes several options for registering drawing's information, saving, and exiting application.
-__PaintFrame__ implements several event handlers and registers event listeners on mouse move, menu entries, and tool bar choices. 
+__PaintFrame__ implements several event handlers and registers event listeners on mouse move, menu entries, and tool bar choices.
+
+## Assignment 7
+
+Java _Graphics2D_ are used to represent __Drawing__ class' object. _draw(Graphics g)_ methods of __Drawing__ and underlying classes are called from a __DrawingPaenel__ class' (__JPanel's__ subclass) _paintComponent(Graphics g)_ method.
