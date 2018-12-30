@@ -1,6 +1,7 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class DrawingPanel extends JPanel{
 	Drawing drawing;
+	Shape currentShape;
 	
 	/** 
 	 * Default constructor.
@@ -28,14 +30,18 @@ public class DrawingPanel extends JPanel{
 	 * @param d
 	 */
 	DrawingPanel(Drawing d) {
-		drawing = d;
+		drawing = new Drawing();
+		addDrawing(d);
+		repaint();
 	}
 	
 	/**
 	 * @param d the Drawing to set
 	 */
 	public void setDrawing(Drawing d) {
-		drawing = d;
+		drawing.clear();
+		addDrawing(d);
+		repaint();
 	}
 	
 	/**
@@ -55,10 +61,30 @@ public class DrawingPanel extends JPanel{
 		while(iterator.hasNext()) {
 			drawing.addShape(iterator.next());
 		}
+		repaint();
+	}
+	
+	public void addCurrentShape(Point p1, Point p2, String color, int shapeIdx) {
+		if(shapeIdx == 0) {
+			currentShape = new Circle(p1, color);
+		}
+		else {
+			currentShape = new Rectangle(p1, color);
+		}
+		currentShape.addPoint(p2);
+		repaint();
+	}
+	
+	public void clearCurrentShape() {
+		currentShape = null;
+		repaint();
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		drawing.draw(g);
+		if(currentShape != null) {
+			currentShape.draw(g);
+		}
 	}
 }
