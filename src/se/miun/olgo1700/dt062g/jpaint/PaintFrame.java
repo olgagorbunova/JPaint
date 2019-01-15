@@ -43,6 +43,7 @@ public class PaintFrame extends JFrame {
 		super(appName);
 		setLayout(new BorderLayout());
 		setSize(600, 400);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ImageIcon img = new ImageIcon("icon.png");

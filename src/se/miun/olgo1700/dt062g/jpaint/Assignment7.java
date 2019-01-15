@@ -1,5 +1,6 @@
 package se.miun.olgo1700.dt062g.jpaint;
 import javax.swing.SwingUtilities;
+import javax.swing.text.WrappedPlainView;
 
 /**
 * <h1>Assignment 7</h1>
