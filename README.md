@@ -42,3 +42,7 @@ __PaintFrame__ implements several event handlers and registers event listeners o
 ## Assignment 7
 
 Java _Graphics2D_ are used to represent __Drawing__ class' object. _draw(Graphics g)_ methods of __Drawing__ and underlying classes are called from a __DrawingPaenel__ class' (__JPanel's__ subclass) _paintComponent(Graphics g)_ method.
+
+## Assignment 8
+
+__Server__ is created that can establish connection with several clients simultaneously (using class __ClientHandler__ to manage communication between _Server_ and _Client_). Class __Client__ represents a _Client_. _Server_ and _Client_ can exchange files, as well as _Client_ can receive a list of XML files from _Server_.
