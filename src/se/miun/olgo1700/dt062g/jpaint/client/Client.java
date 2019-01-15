@@ -134,6 +134,11 @@ public class Client{
 			try {
 				out.println("load");
 				out.println(fileName);
+				
+				File myDir = new File("clientXml/");
+				if(!myDir.exists())
+					myDir.mkdir();
+					
 				String saveToPath = "clientXml/" + fileName;
 				
 				String line = in.readLine();
