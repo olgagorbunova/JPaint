@@ -1,13 +1,14 @@
 package se.miun.olgo1700.dt062g.jpaint;
 
 import java.awt.Graphics;
-import java.util.LinkedList;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import java.util.*;
+import java.util.stream.*;
 /**
 * Class represents a drawing. Drawing attributes are name, author and geometric shapes that the drawing consists of.
 *
@@ -113,15 +114,19 @@ public class Drawing implements Drawable {
 	 */
 	public double getTotalCircumference() {
 		double totCirc = 0;
-		for(Shape s: shapes) {
+		
+		Stream<Double> circs = shapes.stream().map((a) -> {
+			double circ = 0;
 			try {
-				double sCirc = s.getCircumference();
-				totCirc += sCirc;
+				circ = a.getCircumference();
+			} catch (ShapeIncompleteException e) {
+				e.printStackTrace();
 			}
-			catch(ShapeIncompleteException e) {
-				continue;
-			}
-		}
+			return circ;
+		});
+		
+		totCirc = circs.reduce((double) 0, (a, b) -> a + b);
+		
 		return totCirc;
 	}
 	
@@ -131,15 +136,19 @@ public class Drawing implements Drawable {
 	 */
 	public double getTotalArea() {
 		double totArea = 0;
-		for(Shape s: shapes) {
+
+		Stream<Double> areas = shapes.stream().map((a) -> {
+			double area = 0;
 			try {
-				double sArea = s.getArea();
-				totArea += sArea;
+				area = a.getArea();
+			} catch (ShapeIncompleteException e) {
+				e.printStackTrace();
 			}
-			catch(ShapeIncompleteException e) {
-				continue;
-			}
-		}
+			return area;
+		});
+		
+		totArea = areas.reduce((double) 0, (a, b) -> a + b);
+		
 		return totArea;
 	}
 
