@@ -46,3 +46,7 @@ Java _Graphics2D_ are used to represent __Drawing__ class' object. _draw(Graphic
 ## Assignment 8
 
 __Server__ is created that can establish connection with several clients simultaneously (using class __ClientHandler__ to manage communication between _Server_ and _Client_). Class __Client__ represents a _Client_. _Server_ and _Client_ can exchange files, as well as _Client_ can receive a list of XML files from _Server_.
+
+## Assignment 9
+
+Use lambda expressions where possible (event listeners), and Stream API for total area and circunference calculation (__Drawing__ class).
