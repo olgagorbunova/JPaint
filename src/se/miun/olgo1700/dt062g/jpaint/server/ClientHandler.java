@@ -3,6 +3,7 @@ package se.miun.olgo1700.dt062g.jpaint.server;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -86,17 +87,23 @@ public class ClientHandler extends Thread {
 	 */
 	private void sendFilenames() {
 		try {
-			//File folder = new File("C:\\Users\\olgag\\Documents\\Java\\JPaint\\xml");
 			File folder = new File("xml/");
-			File[] listOfFiles = folder.listFiles();
-
-			int nrOfXml = 0;
+			
+			File[] listOfFiles = folder.listFiles(new FilenameFilter() {
+				@Override
+				public boolean accept(File dir, String name) {
+					if(name.endsWith(".xml")) {
+						return true;
+					}
+					return false;
+				}
+			});
+			
+			int nrOfXml = listOfFiles.length;
+			
 			LinkedList<String> xmlFileList = new LinkedList<>();
-			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].isFile() && isXml(listOfFiles[i].getName())) {
-					nrOfXml++;
-					xmlFileList.add(listOfFiles[i].getName());
-				 }
+			for (int i = 0; i < nrOfXml; i++) {
+				xmlFileList.add(listOfFiles[i].getName());
 			}
 			
 			out.println(nrOfXml);
@@ -104,29 +111,10 @@ public class ClientHandler extends Thread {
 				out.println(file);
 			
 			System.out.println("File list sent to " + clientAddress);
+			
 		} catch (Exception e) {
 			System.err.println("Error sendng file list to " + clientAddress);
 		}
-	}
-	
-	/**
-	 * Verifies if a file name ends with '.xml'.
-	 * @param fileName name of file
-	 * @return true if file is an XML file, otherwise false
-	 * 
-	 */
-	private boolean isXml(String fileName) {
-		if(fileName.length() > 4) {
-			String nameEnd = fileName.substring(fileName.length() - 4);
-			
-			if(nameEnd.equals(".xml")) {
-				return true;
-			}
-			else
-				return false;
-		}
-		else
-			return false;
 	}
 	
 	/**
@@ -194,5 +182,6 @@ public class ClientHandler extends Thread {
 			System.err.println("Error reading message from " + clientAddress);
 		}
 	}
+
 }
 
